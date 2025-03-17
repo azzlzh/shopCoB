@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- 添加favicon -->
+    <!-- <link rel="icon" href="source/favicon.ico" type="image/x-icon"> -->
+    <link rel="icon" href="source/logo.jpg" type="image/png">
+
+    <!-- 共享描述信息 -->
+    <script type="application/json" id="shared-meta-info">
+        {
+            "title": "我的商品橱窗，福建土特产和应季水果，包邮优惠，欢迎下单！",
+            "description": "不需要登录，就浏览商品，然后选择要购买的，复制信息给我就可以下单啦",
+            "image": "https://bdcapi-yq.teleware.cn/shopCToB/source/logo2.png?v=1.0",
+            "url": "https://bdcapi-yq.teleware.cn/shopCToB/index.html?v=1.0"
+        }
+    </script>
+
+    <!-- QQ分享用到的标题 -->
+    <meta property="og:title" content="我的商品橱窗，福建土特产和应季水果，包邮优惠，欢迎下单！">
+    <meta property="og:description" content="不需要登录，就浏览商品，然后选择要购买的，复制信息给我就可以下单啦">
+    <meta property="og:image" content="https://bdcapi-yq.teleware.cn/shopCToB/source/logo2.png?v=1.1">
+    <meta property="og:url" content="https://bdcapi-yq.teleware.cn/shopCToB/index.html?v=1.1">
+    <meta property="og:type" content="website">
+
+    <!-- 微信分享卡片的标题 -->
+    <meta name="description" content="不需要登录，就浏览商品，然后选择要购买的，复制信息给我就可以下单啦">
+    <title>我的商品橱窗，福建土特产和应季水果，包邮优惠，欢迎下单！</title>
+
+    <!-- 样式表引用 -->
+    <link rel="stylesheet" href="styles.css?v=1.1">
+</head>
+
+<body oncontextmenu="return false;" onselectstart="return false;">
+    <div class="container">
+        <div class="header">
+            <img src="https://bdcapi-yq.teleware.cn/shopCToB/source/logo2.png"
+                style="visibility:hidden;width: 0;height: 0;" />
+            <img src="source/logov2.jpg" class="logo" />
+        </div>
+
+        <div id="background-image-container" 
+             style="display: flex; overflow-x: auto; white-space: nowrap; cursor: pointer;height: 150px !important;padding-top: 50px;">
+            <!-- 图片缩列图将通过JavaScript动态生成 -->
+        </div>
+            <!-- 分类选择器 -->
+            <div class="category-selector">
+                <!-- <label for="category-select">选择分类：</label> -->
+                <label for="category-select"><strong>我的商品橱窗</strong></label>
+                <select id="category-select">
+                    <option value="all">所有分类</option>
+                    <option value="耙耙柑">耙耙柑</option>
+                    <option value="花生">花生</option>
+                    <option value="漳浦肉丸">漳浦肉丸</option>
+                    <!-- <option value="豆腐干">豆腐干</option>
+                <option value="土鸡">土鸡</option> -->
+                </select>
+            </div>
+
+            <!-- 搜索框 -->
+            <div class="search-container">
+                <input type="text" id="search-input" placeholder="搜索商品...">
+            </div>
+        <div id="product-list">
+            <!-- 商品列表将通过JavaScript动态生成 -->
+        </div>
+
+        <!-- 管理员面板 -->
+        <div id="admin-panel" class="hidden">
+            <h2>管理员操作</h2>
+            <label for="product-id">商品ID：</label>
+            <input type="number" id="product-id" placeholder="输入商品ID">
+            <br>
+            <label for="upload-image">上传商品图片：</label>
+            <input type="file" id="upload-image" accept="image/*">
+            <br>
+            <label for="product-price">设置商品价格：</label>
+            <input type="number" id="product-price" placeholder="输入价格">
+            <button id="save-changes">保存修改</button>
+        </div>
+
+        <!-- 底部提示 -->
+        <div id="bottom-indicator" class="hidden">
+            <div id="show-qr-code2" style="font-size: xx-small;color:darkblue;margin-bottom: 10px;">
+                购买页面优惠商品,点击加安置在微信好友下单。</div>
+            <div class="divider">
+                <div class="divider-text">~我也是有底线的~</div>
+            </div>
+        </div>
+
+        <!-- 用户面板 -->
+        <div id="user-panel" class="hidden">
+            <button id="clear-quantities">清空所选分类数量</button> <!-- 添加清空数量按钮 -->
+            <button id="order-button">下单所选分类</button>
+        </div>
+
+        <!-- 图片放大模态框 -->
+        <div id="image-modal" class="modal hidden">
+            <span class="close-modal">&times;</span>
+            <div class="image-container">
+                <img class="modal-content" id="modal-image">
+            </div>
+            <div class="zoom-controls">
+                <button id="zoom-in">+</button>
+                <button id="zoom-out">-</button>
+            </div>
+        </div>
+
+        <!-- 下单确认模态框 -->
+        <div id="order-modal" class="modal hidden">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <h2>确认订单</h2>
+                <div id="order-details"></div>
+                <p>总价格： <span id="total-price">0</span>元</p>
+                <div class="form-group">
+                    <label for="shipping-address">收件详细信息或备注：</label>
+                    <textarea id="shipping-address" rows="4" placeholder="请输入收件详细信息或备注"></textarea>
+                </div>
+                <div id="show-qr-code3" style="font-size: xx-small;color:darkblue;margin-bottom: 10px;">
+                    确认订单,添加安置在为微信好友,复制商品信息下单吧~</div>
+                <div class="button-container">
+                    <button id="cancel-order">取消</button>
+                    <button id="copy-order">复制</button>
+                    <button id="show-qr-code">加微信下单</button> <!-- 新增按钮 -->
+                </div>
+            </div>
+        </div>
+
+        <!-- 二维码模态框 -->
+        <div id="qr-code-modal" class="modal hidden">
+            <div class="modal-content">
+                <h2>微信二维码</h2>
+                <div class="qr-code-container">
+                    <img src="source/名片.png" alt="微信二维码" class="qr-code-image">
+                </div>
+            </div>
+        </div>
+
+        <!-- 返回顶部按钮 -->
+        <button id="back-to-top" class="hidden">返回顶部</button>
+    </div>
+    <script src="script.js"></script>
+
+    <!-- 版权声明和法律警告 -->
+    <div style="text-align: center; font-size: 12px; color: #666; margin-top: 20px;">
+        <p>版权所有 &copy; 2025 我的商品橱窗. 未经许可，不得复制或分发本页面的任何内容。</p>
+        <p>违反版权将依法处理。</p>
+    </div>
+</body>
+
+</html>

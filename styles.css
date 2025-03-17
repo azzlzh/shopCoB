@@ -1,0 +1,482 @@
+/* 基本样式 */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 1px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    position: relative;
+    min-height: calc(100vh - 30px); /* 确保内容区域有足够的高度 */
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+/* 搜索框样式 */
+.search-container {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#search-input {
+    width: 80%;
+    max-width: 400px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 50px;
+    font-size: 16px;
+}
+
+/* 商品列表样式 */
+#product-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: 20px;
+    padding-bottom: 30px; /* 确保底部有足够的空间 */
+}
+
+.product-item {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+    padding: 15px;
+    width: calc(33.333% - 20px); /* 每行三个商品 */
+    text-align: center;
+    transition: transform 0.2s;
+}
+
+.product-item:hover {
+    transform: translateY(-5px);
+}
+
+.product-image {
+    width: 130px; /* 固定宽度 */
+    height: 130px; /* 固定高度 */
+    object-fit: cover; /* 保持图片比例并裁剪 */
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.product-image:hover {
+    transform: scale(1.05);
+}
+
+.product-name {
+    font-size: 18px;
+    color: #333;
+    margin: 10px 0 5px;
+}
+
+.product-price {
+    font-size: 16px;
+    color: #888;
+}
+
+.quantity-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.quantity-button {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    margin: 0 5px;
+}
+
+.quantity-button:hover {
+    background-color: #0056b3;
+}
+
+/* 数量输入框样式 */
+.product-quantity {
+    width: 50px;
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 16px;
+}
+
+/* 管理员面板样式 */
+#admin-panel, #user-panel {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.hidden {
+    display: none;
+}
+
+/* 用户面板样式 */
+#user-panel {
+    position: fixed;
+    bottom: 2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 400px;
+    padding: 10px;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#user-panel button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-right: 10px; /* 增加按钮之间的间距 */
+}
+
+#user-panel button:hover {
+    background-color: #45a049;
+}
+
+/* 最后一个按钮不需要右侧间距 */
+#user-panel button:last-child {
+    margin-right: 0; /* 最后一个按钮不需要右侧间距 */
+}
+
+/* 模态框样式 */
+.modal {
+    display: none; /* 默认隐藏 */
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 600px;
+    border-radius: 8px;
+    position: relative;
+    overflow: auto; /* 允许滚动 */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.close-modal {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 2; /* 确保关闭按钮在图片上方 */
+}
+
+.close-modal:hover,
+.close-modal:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* 显示模态框时移除隐藏类 */
+.modal:not(.hidden) {
+    display: block;
+}
+
+/* 弹窗中图片样式 */
+.modal-content img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    cursor: zoom-in;
+    z-index: 0; /* 确保图片在关闭按钮下方 */
+}
+
+.modal-content img:hover {
+    cursor: zoom-out;
+}
+
+/* 图片容器样式 */
+.image-container {
+    width: 100%;
+    height: 300px; /* 固定高度 */
+    overflow: auto; /* 允许滚动 */
+    margin-bottom: 10px;
+}
+
+/* 放大缩小控制按钮样式 */
+.zoom-controls {
+    margin-top: 10px;
+    display: flex;
+    gap: 10px;
+    justify-content: center; /* 居中显示 */
+    position: relative; /* 确保按钮在模态框内 */
+    z-index: 1; /* 确保按钮在图片上方 */
+}
+
+.zoom-controls button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    transition: opacity 0.3s;
+}
+
+.zoom-controls button:hover {
+    opacity: 0.8;
+}
+
+/* 下单确认模态框样式 */
+#order-modal .modal-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+#order-modal .modal-content button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: opacity 0.3s;
+}
+
+#order-modal .modal-content button:hover {
+    opacity: 0.8;
+}
+
+#order-modal .modal-content #cancel-order {
+    background-color: #f44336;
+    color: white;
+}
+
+#order-modal .modal-content #copy-order {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 10px;
+}
+
+/* 底部提示样式 */
+#bottom-indicator {
+    text-align: center;
+    margin-top: 20px;
+    padding: 10px;
+    padding-bottom: 60px;
+    background-color: #f9f9f9;
+    border-top: 1px solid #ddd;
+}
+
+#bottom-indicator p {
+    margin: 0;
+    color: #888;
+    font-size: 14px;
+}
+
+.divider {
+    width: 100%;
+    height: 1px;
+    position: relative;
+    background-color: #fa83345c;
+}
+
+.divider-text {
+    position: absolute;
+    background-color: #FFF;
+    padding: 0 20px;
+    color: #303133;
+    left: 25%;
+    transform: translateY(-50%);
+}
+
+/* 分类选择器样式 */
+.category-selector {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.category-selector select {
+    padding: 5px 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+/* 弹窗确认模态框中的表单组样式 */
+.form-group {
+    margin-top: 10px;
+    width: 90%;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 16px;
+    color: #333;
+}
+
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    resize: vertical; /* 允许垂直调整大小 */
+}
+
+/* 商品描述样式 */
+.product-description {
+    font-size: 14px;
+    color: #666;
+    margin: 5px 0;
+}
+
+.qr-code-container {
+    text-align: center;
+}
+
+.qr-code-image {
+    max-width: 100%;
+    height: auto;
+}
+
+#order-modal .modal-content #show-qr-code {
+    background-color: #1f477c;
+    color: white;
+}
+
+/* 返回顶部按钮样式 */
+#back-to-top {
+    position: fixed;
+    bottom: 83px;
+    right: 0px;
+    background-color: #008CBA;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    font-size: 10px;
+    cursor: pointer;
+    z-index: 1000;
+    display: none; /* 默认隐藏 */
+    transition: background-color 0.3s ease;
+}
+
+#back-to-top:hover {
+    background-color: #005f73;
+}
+
+ 
+/* ... 其他样式 ... */
+
+.product-item {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+    padding: 15px;
+    width: calc(33.333% - 20px); /* 每行三个商品 */
+    text-align: center;
+    transition: transform 0.2s;
+}
+
+/* 媒体查询：手机屏幕 */
+@media (max-width: 768px) {
+    .product-item {
+        width: calc(50% - 20px); /* 每行两个商品 */
+        margin: 5px; /* 减少间距 */
+        padding: 10px; /* 减少内边距 */
+    }
+}
+
+/* 媒体查询：更小的屏幕 */
+@media (max-width: 480px) {
+    .product-item {
+        width: 100%; /* 每行一个商品 */
+        margin: 5px; /* 减少间距 */
+        padding: 10px; /* 减少内边距 */
+    }
+}
+
+/* ... 其他样式 ... */
+ 
+/* 固定头部 */
+.header {  
+    position: fixed;
+    top: 2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 100%;
+    padding: 10px;
+    color: white;
+    /* font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer; */
+    transition: background-color 0.3s;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 设置logo样式 */
+.logo {
+    width: 100%;
+    max-height: 100px; /* 根据需要调整高度 */
+}
