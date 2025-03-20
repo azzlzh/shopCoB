@@ -4,6 +4,7 @@
 const images = [
     // { src: 'source/耙耙柑清单.jpg', alt: '耙耙柑清单' },
     // { src: 'source/耙耙柑价格清单.jpg', alt: '耙耙柑价格清单' },
+    { src: 'source/金煌芒果清单.png', alt: '海南芒果清单' },
     { src: 'source/花生清单.jpg', alt: '花生清单' },
     { src: 'source/漳浦肉丸清单.jpg', alt: '漳浦肉丸清单' },
     { src: 'source/推荐礼.png', alt: '推荐礼' }
@@ -17,7 +18,7 @@ let products = JSON.parse(localStorage.getItem("products")) || [
     
     //漳浦肉丸
     { id: 208, name: "漳浦肉丸 5斤包邮", price: 115, image: "source/漳浦肉丸.jpg", category: "漳浦肉丸", description: "Q弹爆汁：咬一口，肉汁四溢，幸福感爆棚！。" },
-    
+
     // { id: 1, name: "白晒花生", price: 55, image: "source/白晒花生.png", category: "花生", description: "新鲜晒制的白晒花生，口感香脆，营养丰富。" },
     // { id: 2, name: "红皮花生", price: 60, image: "source/红皮花生.png", category: "花生", description: "红皮花生，口感醇厚，富含蛋白质。" },
     // { id: 3, name: "七彩花生", price: 88, image: "source/七彩花生.png", category: "花生", description: "多种颜色的花生，营养均衡，美味可口。" },
@@ -71,6 +72,17 @@ let products = JSON.parse(localStorage.getItem("products")) || [
     // { id: 106, name: "耙耙柑果王 8斤包邮", price: 55, image: "source/耙耙柑.png", category: "耙耙柑", description: "顶级果王耙耙柑，果径90mm以上，甜度极高，口感多汁，8斤装包邮。" },
     // { id: 107, name: "耙耙柑花皮果 8斤包邮", price: 38, image: "source/耙耙柑.png", category: "耙耙柑", description: "花皮耙耙柑，果皮带有美丽花纹，果径适中，甜度适中，口感多汁，8斤装包邮。" },
     // { id: 108, name: "耙耙柑礼盒装", price: 68, image: "source/耙耙柑.png", category: "耙耙柑", description: "礼盒装耙耙柑，果径约90mm，甜度极高，口感多汁，8斤装精美礼盒包装，包邮。" },
+  // 海南金煌芒+哈密瓜  3月~
+    { id: 301, name: "海南金煌芒中果 5斤包邮", price: 35, image: "source/海南金煌芒2.jpg", category: "海南金煌芒", description: "5斤装包邮。" },
+    { id: 302, name: "海南金煌芒大果 5斤包邮", price: 37, image: "source/海南金煌芒2.jpg", category: "海南金煌芒", description: "5斤装包邮。" },
+    { id: 303, name: "海南金煌芒果王 5斤包邮", price: 38, image: "source/海南金煌芒2.jpg", category: "海南金煌芒", description: "5斤装包邮。" },
+    { id: 304, name: "海南金煌芒中果 8斤包邮", price: 55, image: "source/海南金煌芒2.jpg", category: "海南金煌芒", description: "8斤装包邮。" },
+    { id: 305, name: "海南金煌芒大果 8斤包邮", price: 57, image: "source/海南金煌芒2.jpg", category: "海南金煌芒", description: "8斤装包邮。" },
+    { id: 306, name: "海南金煌芒果王 8斤包邮", price: 59, image: "source/海南金煌芒2.jpg", category: "海南金煌芒", description: "8斤装包邮。" },
+    { id: 307, name: "海南金煌芒花皮果 8斤包邮", price: 46, image: "source/海南金煌芒2.jpg", category: "海南金煌芒", description: "花皮8斤装包邮。" },
+    { id: 311, name: "哈密瓜 5斤包邮", price: 30, image: "source/哈密瓜.jpg", category: "哈密瓜", description: "5斤装包邮。" },
+    { id: 312, name: "哈密瓜 9斤包邮", price: 52, image: "source/哈密瓜.jpg", category: "哈密瓜", description: "9斤装包邮。" },
+    
 
 
 ];
