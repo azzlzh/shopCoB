@@ -12,7 +12,7 @@ const images = [
 ];
 // 动态生成下拉选项（可选优化） 
 // const categories = ['all', '耙耙柑', '花生', '漳浦肉丸']; // 商品分类数组
-const categories = ['all', '花生', '漳浦肉丸']; // 商品分类数组
+const categories = ['all', '海南金煌芒','哈密瓜', '漳浦肉丸','花生']; // 商品分类数组 
 // 模拟商品数据，存储在localStorage中
 let products = JSON.parse(localStorage.getItem("products")) || [
     
